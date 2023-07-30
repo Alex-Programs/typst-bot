@@ -165,41 +165,8 @@ impl<'a> poise::PopArgument<'a> for RenderFlags {
 }
 
 fn render_help() -> String {
-	let default_preamble = Preamble::default().preamble();
-
 	format!(
-		"\
-Render the given code as an image.
-
-Syntax: `?render [pagesize=<page size>] [theme=<theme>] <code block>`
-
-**Flags**
-
-- `pagesize` can be `auto` (default) or `default`.
-
-- `theme` can be `dark` (default), `light`, or `transparent`.
-
-To be clear, the full default preamble is:
-
-```
-{default_preamble}
-```
-
-To remove the preamble entirely, use `pagesize=default theme=transparent`.
-
-**Examples**
-
-```
-?render `hello, world!`
-
-?render pagesize=default theme=light ``‌`
-= Heading!
-
-And some text.
-
-#lorem(100)
-``‌`
-```"
+		"See https://discord.com/channels/759332813446316042/1026220421550460968/1135151260245430435"
 	)
 }
 
@@ -272,6 +239,7 @@ Type ?help command for more info on a command.
 You can edit your message to the bot and the bot will edit its response.
 Commands prefixed with / can be used as slash commands and prefix commands.
 Commands prefixed with ? can only be used as prefix commands.",
+		ephemeral: true,
 		..Default::default()
 	};
 	poise::builtins::help(ctx, command.as_deref(), config).await?;
